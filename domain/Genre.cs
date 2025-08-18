@@ -1,0 +1,36 @@
+﻿namespace BL.domain;
+
+public enum Genre
+{
+    Party,
+    RPG,
+    MMORPG,
+    TwoDPlatformer,
+    ThreeDPlatformer,
+    Racing,
+    BeatEmUp,
+    PlatformFighter,
+    Collectathon,
+    Sports,
+    Adventure,
+    Sandbox,
+    Simulation,
+    Story,
+    FreeRoam,
+    Metroidvania,
+    BattleRoyale,
+    FirstPersonShooter,
+    ThirdPersonShooter,
+    Survival,
+    Horror,
+    ChooseYourOwnAdventure,
+    SciFi,
+    Fighting,
+    SideScroller,
+    HeroShooter,
+    SocialDeduction,
+    Puzzle,
+    TimeManagement,
+    Multiplayer,
+    Singleplayer
+}
