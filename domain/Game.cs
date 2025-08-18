@@ -2,7 +2,6 @@
 
 public class Game
 {
-    //something's off
     public string Name { get; set; }
     public string Description { get; set; }
     public IEnumerable<Genre> Genres { get; set; }
