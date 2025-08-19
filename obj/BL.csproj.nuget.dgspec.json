@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\vanos\\RiderProjects\\GameCatalog\\BL\\BL.csproj",
-        "projectName": "BL",
+        "projectName": "GameCatalog.BL",
         "projectPath": "C:\\Users\\vanos\\RiderProjects\\GameCatalog\\BL\\BL.csproj",
         "packagesPath": "C:\\Users\\vanos\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\vanos\\RiderProjects\\GameCatalog\\BL\\obj\\",
@@ -42,6 +42,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.19, )"
+            },
+            "SQLite": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

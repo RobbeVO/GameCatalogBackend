@@ -1,4 +1,4 @@
-﻿namespace BL.domain;
+﻿namespace GameCatalog.BL.domain;
 
 public enum Genre
 {
