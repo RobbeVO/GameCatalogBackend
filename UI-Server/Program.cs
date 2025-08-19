@@ -1,0 +1,85 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using GameCatalog.BL;
+using GameCatalog.DAL;
+using GameCatalog.DAL.EF;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+const string adminRole = "ADMIN";
+const string userRole = "USER";
+
+
+var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("GameCatalogDbContextConnection") 
+    ?? throw new InvalidOperationException("Connection string 'GameCatalogDbContextConnection' not found.");
+
+builder.Services.AddDbContext<GcDbContext>(optionsBuilder => 
+    optionsBuilder.UseSqlite("Data Source=GameCatalog.db"));
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<IManager, Manager>();
+builder.Services.AddControllers();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+    {
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = true;
+        options.Password.RequireDigit = true;
+        options.Password.RequiredLength = 8;
+    })
+    .AddEntityFrameworkStores<GcDbContext>()
+    .AddDefaultTokenProviders();
+
+var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var ctx = scope.ServiceProvider.GetRequiredService<GcDbContext>();
+    if (ctx.CreateDatabase(true)) //!!IMPORTANT: in production false!!
+    {
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        IdentitySeeding(userManager, roleManager);
+        DataSeeder.Seed(ctx);
+    }
+}
+
+void IdentitySeeding(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+{
+    roleManager.CreateAsync(new IdentityRole(adminRole)).Wait();
+    roleManager.CreateAsync(new IdentityRole(userRole)).Wait();
+
+    var admin = new IdentityUser("RobbeVO")
+    {
+        Email = "van.osselaer.robbe@hotmail.com"
+    };
+    userManager.CreateAsync(admin, "Robbe371!").Wait();
+    userManager.AddToRoleAsync(admin, adminRole).Wait();
+
+    var user = new IdentityUser("AskEfes")
+    {
+        Email = "filip.slaets@outlook.com"
+    };
+    userManager.CreateAsync(user, "FilipS196!").Wait();
+    userManager.AddToRoleAsync(user, userRole).Wait();
+}
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/error");
+}
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
+
+public partial class Program {}
