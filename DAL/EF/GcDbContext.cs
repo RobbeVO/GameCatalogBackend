@@ -15,7 +15,7 @@ public class GcDbContext : IdentityDbContext<IdentityUser>
     }
 
     public DbSet<Game> Games { get; init; }
-    public DbSet<Review> Answers { get; init; }
+    public DbSet<Review> Reviews { get; init; }
     public DbSet<Account> Accounts { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
