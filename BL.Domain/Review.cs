@@ -1,7 +1,10 @@
-﻿namespace GameCatalog.BL.domain;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GameCatalog.BL.domain;
 
 public class Review
 {
+    [Key]
     public Guid Id { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }

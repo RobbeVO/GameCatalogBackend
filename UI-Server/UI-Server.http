@@ -1,0 +1,22 @@
+@UI_Server_HostAddress = http://localhost:5097
+
+###homepage with popular games
+GET http://localhost:5097/api/Home
+
+###find games in search bar
+GET http://localhost:5097/api/Games?namePart=hol
+
+###go to details of game
+GET http://localhost:5097/api/Games/7abe12fd-0e59-4903-9dbd-b1549981c4fb
+
+###post review
+POST http://localhost:5097/api/Reviews
+Content-Type: application/json
+
+{
+  "Title": "over 200 hours of playtime. Still can't get enough!",
+  "Content": "Team Cherry’s Hollow Knight is a masterclass in atmosphere and design. Its gorgeous art style, eerie soundtrack, and tight combat make the first journey through Hallownest unforgettable. What sets it apart, though, is its replay value—with multiple endings, hidden bosses, and countless charm combinations, every run feels unique. The Godhome DLC pushes this even further, offering some of the hardest challenges in the game through boss rushes and Pantheons. Players can easily spend dozens of hours here alone, striving to conquer every trial and perfect their skills. Whether you’re aiming for 112% completion, experimenting with new builds, or tackling Godhome’s brutal challenges, Hollow Knight always gives you a reason to come back.",
+  "Rating": 4,
+  "Username": "AskEfes",
+  "GameId": "7abe12fd-0e59-4903-9dbd-b1549981c4fb"
+}

@@ -45,7 +45,7 @@ public class GcDbContext : IdentityDbContext<IdentityUser>
 
         modelBuilder.Entity<Review>(r => { r.HasKey(review => review.Id); });
 
-        modelBuilder.Entity<Account>(a => { a.HasKey(answer => answer.Id); });
+        modelBuilder.Entity<Account>(a => { a.HasKey(account => account.Id); });
 
         modelBuilder.Entity<Review>()
             .HasOne(r => r.Account)

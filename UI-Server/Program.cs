@@ -1,20 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using GameCatalog.BL;
 using GameCatalog.DAL;
 using GameCatalog.DAL.EF;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 const string adminRole = "ADMIN";
 const string userRole = "USER";
 
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("GameCatalogDbContextConnection") 
-    ?? throw new InvalidOperationException("Connection string 'GameCatalogDbContextConnection' not found.");
 
 builder.Services.AddDbContext<GcDbContext>(optionsBuilder => 
     optionsBuilder.UseSqlite("Data Source=GameCatalog.db"));

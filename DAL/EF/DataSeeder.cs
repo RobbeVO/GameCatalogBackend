@@ -11,6 +11,7 @@ public static class DataSeeder
                                           " ruined kingdom of insects and heroes. Hollow Knight is a classically styled" +
                                           " 2D action adventure across a vast interconnected world.",
             Name = "Hollow Knight",
+            ImageUrl = "https://static.wikia.nocookie.net/hollowknight/images/e/e6/Hollow_Knight_VoidHeart_Edition_Xbox_One_Front_Cover.jpg/revision/latest/scale-to-width-down/1200?cb=20201215192046",
             Genres = new List<Genre> { Genre.Adventure, Genre.Metroidvania, Genre.Singleplayer, Genre.Story, Genre.TwoDPlatformer }
         };
         

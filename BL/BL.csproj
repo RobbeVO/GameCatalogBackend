@@ -13,4 +13,13 @@
       <PackageReference Include="SQLite" Version="3.13.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BL.Domain\BL.Domain.csproj" />
+      <ProjectReference Include="..\DAL\DAL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="domain\" />
+    </ItemGroup>
+
 </Project>
