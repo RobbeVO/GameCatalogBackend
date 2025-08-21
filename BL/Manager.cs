@@ -27,4 +27,9 @@ public class Manager(IRepository repo) : IManager
         var review = new Review {Title = title, Content = content, Rating = rating, Account = account, Game = game};
         repo.SaveReview(review);
     }
+
+    public IEnumerable<Game> GetSuggestions(string username)
+    {
+        return repo.FindSuggestions(username);
+    }
 }

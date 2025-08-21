@@ -8,4 +8,5 @@ public interface IManager
     Game GetGameById(Guid id);
     IEnumerable<Game> GetGames(string namePart);
     void CreateReview(string title, string content, int rating, string username, Guid gameId);
+    IEnumerable<Game> GetSuggestions(string username);
 }

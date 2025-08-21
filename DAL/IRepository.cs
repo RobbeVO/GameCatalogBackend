@@ -9,4 +9,5 @@ public interface IRepository
     IEnumerable<Game> FindGames(string namePart);
     void SaveReview(Review review);
     Account FindAccount(string username);
+    IEnumerable<Game> FindSuggestions(string username);
 }

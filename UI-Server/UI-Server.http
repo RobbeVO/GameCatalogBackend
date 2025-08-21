@@ -20,3 +20,6 @@ Content-Type: application/json
   "Username": "AskEfes",
   "GameId": "7abe12fd-0e59-4903-9dbd-b1549981c4fb"
 }
+
+###get suggestions based on the games you rated/played
+GET http://localhost:5097/api/Games/suggestions?username=RobbeVO

@@ -16,8 +16,17 @@ public class GamesController(IManager manager) : Controller
         return GameMapper.ToDetailsDto(manager.GetGameById(id));
     }
     
+    [HttpGet]
     public IEnumerable<SearchGameDto> Get(string namePart)
     {
         return GameMapper.ToSearchDtos(manager.GetGames(namePart));
+    }
+
+    [HttpGet]
+    [Route("suggestions")]
+    public IEnumerable<GameDto> Suggestions(string username)
+    {
+        var games = manager.GetSuggestions(username);
+        return GameMapper.ToDtos(games);
     }
 }
