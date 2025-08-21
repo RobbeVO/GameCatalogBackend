@@ -10,4 +10,7 @@ public interface IRepository
     void SaveReview(Review review);
     Account FindAccount(string username);
     IEnumerable<Game> FindSuggestions(string username);
+    string RegisterAccount(string email, string username, string password);
+    Task<string> Login(string identifier, string password);
+    void Logout();
 }

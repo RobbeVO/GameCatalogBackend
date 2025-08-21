@@ -32,4 +32,19 @@ public class Manager(IRepository repo) : IManager
     {
         return repo.FindSuggestions(username);
     }
+
+    public string RegisterAccount(string email, string username, string password)
+    {
+        return repo.RegisterAccount(email, username, password);
+    }
+
+    public async Task<string> Login(string identifier, string password)
+    {
+        return await repo.Login(identifier, password);
+    }
+
+    public void Logout()
+    {
+        repo.Logout();
+    }
 }

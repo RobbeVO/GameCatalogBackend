@@ -7,7 +7,6 @@ public static class DataSeeder
 {
     public static void Seed(GcDbContext ctx)
     {
-        // fetch existing accounts
         var a1 = new Account
         {
             Identity = ctx.Users.SingleOrDefault(u => u.Email == "van.osselaer.robbe@hotmail.com")
@@ -17,9 +16,9 @@ public static class DataSeeder
             Identity = ctx.Users.SingleOrDefault(u => u.Email == "filip.slaets@outlook.com")
         };
 
-        // --- Games ---
         var g1 = new Game
         {
+            Id = Guid.Parse("0CE40283-77A6-4F9D-BEB8-C2FD68BBD3BB"),
             Name = "Hollow Knight",
             Description =
                 "Forge your own path in Hollow Knight! An epic action adventure through a vast, ruined kingdom of insects and heroes.",

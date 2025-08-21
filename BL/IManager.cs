@@ -9,4 +9,7 @@ public interface IManager
     IEnumerable<Game> GetGames(string namePart);
     void CreateReview(string title, string content, int rating, string username, Guid gameId);
     IEnumerable<Game> GetSuggestions(string username);
+    string RegisterAccount(string email, string username, string password);
+    Task<string> Login(string identifier, string password);
+    void Logout();
 }
