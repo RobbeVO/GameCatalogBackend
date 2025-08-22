@@ -10,6 +10,8 @@ const string userRole = "USER";
 
 var builder = WebApplication.CreateBuilder(args);
 
+Environment.SetEnvironmentVariable("HF_Api_Key", "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");
+
 builder.Services.AddDbContext<GcDbContext>(optionsBuilder => 
     optionsBuilder.UseSqlite("Data Source=GameCatalog.db"));
 builder.Services.AddScoped<IRepository, Repository>();

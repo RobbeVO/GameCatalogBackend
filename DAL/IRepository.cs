@@ -13,4 +13,5 @@ public interface IRepository
     string RegisterAccount(string email, string username, string password);
     Task<string> Login(string identifier, string password);
     void Logout();
+    bool SaveGame(Game game);
 }

@@ -2,11 +2,13 @@
 using GameCatalog.BL.domain;
 using GameCatalog.UI_Server.Dtos;
 using GameCatalog.UI_Server.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameCatalog.UI_Server.Controllers;
 
 [Route("api/[controller]")]
+[ApiController]
 public class GamesController(IManager manager) : Controller
 {
     [HttpGet]
@@ -28,5 +30,13 @@ public class GamesController(IManager manager) : Controller
     {
         var games = manager.GetSuggestions(username);
         return GameMapper.ToDtos(games);
+    }
+
+    [HttpPost]
+    [Authorize(Roles = "ADMIN")]
+    public async Task<GameDetailsDto> Create([FromBody] CreateGameDto request)
+    {
+        var game = await manager.CreateGame(request.Name, request.Description, request.ImageUrl);
+        return GameMapper.ToDetailsDto(game);
     }
 }

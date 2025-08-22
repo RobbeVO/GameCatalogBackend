@@ -34,8 +34,13 @@ public static class GameMapper
 
     public static GameDetailsDto ToDetailsDto(Game game)
     {
-        var reviews = game.Reviews.Select(review => new ReviewDto(review.Title, review.Content, review.Rating)).ToList();
-        var avgRating = Math.Round(game.Reviews.Average(r => r.Rating), 1, MidpointRounding.AwayFromZero);
+        var reviews = new List<ReviewDto>();
+        var avgRating = 0.0;
+        if (game.Reviews != null)
+        {
+            reviews = game.Reviews.Select(review => new ReviewDto(review.Title, review.Content, review.Rating)).ToList();
+            avgRating = Math.Round(game.Reviews.Average(r => r.Rating), 1, MidpointRounding.AwayFromZero);
+        }
         
         return new GameDetailsDto(game.Id, game.Name, game.Description, game.ImageUrl, GetGameGenres(game), reviews, avgRating);
     }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GameCatalog.UI_Server.Controllers;
 
 [Route("api/[controller]")]
+[ApiController]
 public class HomeController(IManager mgr) : Controller
 {
     [HttpGet]

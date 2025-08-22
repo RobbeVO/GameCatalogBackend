@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace GameCatalog.UI_Server.Controllers;
 
 [Route("api/[controller]")]
+[ApiController]
 public class AccountsController(IManager manager) :  Controller
 {
     [HttpPost]

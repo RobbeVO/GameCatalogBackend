@@ -1,4 +1,6 @@
-﻿using GameCatalog.BL.domain;
+﻿using System.Text;
+using System.Text.Json;
+using GameCatalog.BL.domain;
 using GameCatalog.DAL;
 
 namespace GameCatalog.BL;
@@ -46,5 +48,55 @@ public class Manager(IRepository repo) : IManager
     public void Logout()
     {
         repo.Logout();
+    }
+
+    public async Task<Game> CreateGame(string name, string description, string imageUrl)
+    {
+        var game = new Game {Name = name, Description = description, ImageUrl = imageUrl};
+        var genres = await GenerateGenres(game.Name, game.Description);
+        game.Genres = genres;
+        return repo.SaveGame(game) ? game : null;
+    }
+
+    private static async Task<IEnumerable<Genre>> GenerateGenres(string name, string description)
+    {
+        var apiKey = Environment.GetEnvironmentVariable("HF_Api_Key");
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+
+        var text = $"{name}: {description}";
+        var labels = Enum.GetNames(typeof(Genre)).ToList();
+
+        var data = new
+        {
+            inputs = text,
+            parameters = new
+            {
+                candidate_labels = labels,
+                multi_label = true
+            }
+        };
+
+        var json = JsonSerializer.Serialize(data);
+        var response = await client.PostAsync(
+            "https://api-inference.huggingface.co/models/facebook/bart-large-mnli",
+            new StringContent(json, Encoding.UTF8, "application/json")
+        );
+
+        var resultJson = await response.Content.ReadAsStringAsync();
+        var result = JsonSerializer.Deserialize<HFResult>(resultJson);
+
+        var filtered = new List<string>();
+        for (var i = 0; i < result!.labels.Count; i++)
+        {
+            if (result.scores[i] >= 0.4f)
+                filtered.Add(result.labels[i]);
+        }
+
+        var genres = filtered
+            .Select(Enum.Parse<Genre>)
+            .ToList();
+        
+        return genres;
     }
 }

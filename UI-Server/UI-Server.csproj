@@ -8,6 +8,10 @@
         <AssemblyName>GameCatalog.UI-Server</AssemblyName>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <InvariantGlobalization>true</InvariantGlobalization>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="14.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.19"/>

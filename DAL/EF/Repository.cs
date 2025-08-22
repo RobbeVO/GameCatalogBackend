@@ -79,6 +79,12 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
         signInManager.SignOutAsync().Wait();
     }
 
+    public bool SaveGame(Game game)
+    {
+        ctx.Games.Add(game);
+        return ctx.SaveChanges() == 1;
+    }
+
     private async Task<string> EmailLogin(string email, string password)
     {
         var user = ctx.Users.SingleOrDefault(u => u.Email == email);

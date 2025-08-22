@@ -45,3 +45,13 @@ Content-Type: application/json
 
 ###logout
 POST http://localhost:5097/api/Accounts/logout
+
+###create new game as admin
+POST http://localhost:5097/api/Games
+Content-Type: application/json
+
+{
+  "Name": "Kirby and the Forgotten Land",
+  "Description": "explore a mysterious new land alone or with a friend, discover new copy-abilities and fight against the most diverse beasts in Kirby and the Forgotten Land on the Nintendo Switch!",
+  "ImageUrl": "https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_KirbyAndTheForgottenLand_onlylogo_enGB_image1600w.jpg"
+}
