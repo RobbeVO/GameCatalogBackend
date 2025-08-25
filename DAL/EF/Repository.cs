@@ -8,7 +8,9 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
 {
     public IEnumerable<Game> FindPopularGames()
     {
-        return ctx.Games.Where(game => game.Reviews.Average(review => review.Rating) >= 4);
+        return ctx.Games
+            .Include(game => game.Reviews)
+            .Where(game => game.Reviews.Average(review => review.Rating) >= 4);
     }
 
     public Game FindGame(Guid id)

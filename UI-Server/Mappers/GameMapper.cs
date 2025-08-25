@@ -15,8 +15,15 @@ public static class GameMapper
     private static GameDto ToDto(Game game)
     {
         var genres = GetGameGenres(game);
+        var avgRating = CalculateAverageRating(game);
 
-        return new GameDto(game.Id, game.Name, game.Description, game.ImageUrl, genres);
+        return new GameDto(game.Id, game.Name, game.Description, game.ImageUrl, genres, avgRating);
+    }
+
+    private static double CalculateAverageRating(Game game)
+    {
+        if (game.Reviews == null) return 0;
+        return Math.Round(game.Reviews.Average(r => r.Rating), 1, MidpointRounding.AwayFromZero);
     }
 
     private static List<string> GetGameGenres(Game game)
@@ -51,7 +58,7 @@ public static class GameMapper
         if (game.Reviews != null)
         {
             reviews = game.Reviews.Select(review => new ReviewDto(review.Title, review.Content, review.Rating)).ToList();
-            avgRating = Math.Round(game.Reviews.Average(r => r.Rating), 1, MidpointRounding.AwayFromZero);
+            avgRating = CalculateAverageRating(game);
         }
         
         return new GameDetailsDto(game.Id, game.Name, game.Description, game.ImageUrl, GetGameGenres(game), reviews, avgRating);
