@@ -1,5 +1,7 @@
-﻿using GameCatalog.BL.domain;
+﻿using System.ComponentModel;
+using GameCatalog.BL.domain;
 using GameCatalog.UI_Server.Dtos;
+using Microsoft.OpenApi.Extensions;
 
 namespace GameCatalog.UI_Server.Mappers;
 
@@ -14,12 +16,22 @@ public static class GameMapper
     {
         var genres = GetGameGenres(game);
 
-        return new GameDto(game.Name, game.Description, game.ImageUrl, genres);
+        return new GameDto(game.Id, game.Name, game.Description, game.ImageUrl, genres);
     }
 
-    private static IEnumerable<string> GetGameGenres(Game game)
+    private static List<string> GetGameGenres(Game game)
     {
-        return game.Genres.Select(genre => genre.ToString()).ToList();
+        return game.Genres
+            .Select(genre => GetEnumDescription(genre))
+            .ToList();
+    }
+    
+    private static string GetEnumDescription(Enum value)
+    {
+        var fi = value.GetType().GetField(value.ToString());
+        if (fi == null) return value.ToString();
+        var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        return attributes.Length > 0 ? attributes[0].Description : value.ToString();
     }
 
     public static IEnumerable<SearchGameDto> ToSearchDtos(IEnumerable<Game> games)

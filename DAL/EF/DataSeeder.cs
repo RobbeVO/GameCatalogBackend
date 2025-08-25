@@ -23,7 +23,7 @@ public static class DataSeeder
             Description =
                 "Forge your own path in Hollow Knight! An epic action adventure through a vast, ruined kingdom of insects and heroes.",
             ImageUrl =
-                "https://static.wikia.nocookie.net/hollowknight/images/e/e6/Hollow_Knight_VoidHeart_Edition_Xbox_One_Front_Cover.jpg/revision/latest/scale-to-width-down/1200?cb=20201215192046",
+                "https://static1.squarespace.com/static/606d4deb4db8c15ea53b3624/606d51e7b9917d54cb7b9581/607574683ef75c7c3883b469/1619054981590/Key_Art_02_layered.png?format=1500w",
             Genres = new List<Genre>
                 { Genre.Adventure, Genre.Metroidvania, Genre.Singleplayer, Genre.Story, Genre.TwoDPlatformer }
         };
@@ -33,8 +33,8 @@ public static class DataSeeder
             Name = "The Legend of Zelda: Breath of the Wild",
             Description =
                 "Step into a world of discovery, exploration, and adventure in The Legend of Zelda: Breath of the Wild.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/0/0e/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
-            Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.FreeRoam, Genre.Singleplayer }
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/c/c6/The_Legend_of_Zelda_Breath_of_the_Wild.jpg",
+            Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.Freeroam, Genre.Singleplayer }
         };
 
         var g3 = new Game
@@ -52,7 +52,7 @@ public static class DataSeeder
             Description =
                 "A vast action RPG developed by FromSoftware in collaboration with George R. R. Martin, featuring open-world exploration and challenging combat.",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/b/b9/Elden_Ring_Box_art.jpg",
-            Genres = new List<Genre> { Genre.RPG, Genre.Adventure, Genre.Story, Genre.FreeRoam, Genre.Singleplayer }
+            Genres = new List<Genre> { Genre.RPG, Genre.Adventure, Genre.Story, Genre.Freeroam, Genre.Singleplayer }
         };
 
         var g5 = new Game
@@ -69,9 +69,9 @@ public static class DataSeeder
             Name = "Minecraft",
             Description =
                 "A sandbox game where players can build, explore, and survive in procedurally generated worlds made of blocks.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png",
+            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBw9g6jfRMqOerLIjz4rhmQK5-V3D19bbjdw&s",
             Genres = new List<Genre>
-                { Genre.Sandbox, Genre.Simulation, Genre.FreeRoam, Genre.Multiplayer, Genre.Singleplayer }
+                { Genre.Sandbox, Genre.Simulation, Genre.Freeroam, Genre.Multiplayer, Genre.Singleplayer }
         };
 
         var g7 = new Game
@@ -79,7 +79,7 @@ public static class DataSeeder
             Name = "Mario Kart 8 Deluxe",
             Description =
                 "Nintendo's flagship kart racing game featuring iconic characters, crazy tracks, and frantic multiplayer fun.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/0/0d/Mario_Kart_8_Deluxe.jpg",
+            ImageUrl = "https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000153/de697f487a36d802dd9a5ff0341f717c8486221f2f1219b675af37aca63bc453",
             Genres = new List<Genre> { Genre.Racing, Genre.Party, Genre.Multiplayer }
         };
 
@@ -132,7 +132,7 @@ public static class DataSeeder
             Description =
                 "An epic tale of life in America at the dawn of the modern age. Adventure and story blend seamlessly in its vast open world.",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
-            Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.FreeRoam, Genre.RPG, Genre.Singleplayer }
+            Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.Freeroam, Genre.RPG, Genre.Singleplayer }
         };
 
         var g14 = new Game
@@ -147,23 +147,25 @@ public static class DataSeeder
         var g15 = new Game
         {
             Name = "Rocket League",
-            Description = "High-powered vehicles meet soccer in this fast-paced multiplayer game where players compete in teams to score goals using rocket-powered cars.",
+            Description =
+                "High-powered vehicles meet soccer in this fast-paced multiplayer game where players compete in teams to score goals using rocket-powered cars.",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/e/e0/Rocket_League_coverart.jpg",
-            Genres = new List<Genre> 
-            { 
-                Genre.Sports, 
-                Genre.Multiplayer 
+            Genres = new List<Genre>
+            {
+                Genre.Sports,
+                Genre.Multiplayer
             }
         };
 
         var g16 = new Game
         {
             Name = "League of Legends",
-            Description = "One of the world’s most popular MOBAs where players compete in 5v5 matches, aiming to destroy the enemy nexus with strategic teamwork.",
+            Description =
+                "One of the world’s most popular MOBAs where players compete in 5v5 matches, aiming to destroy the enemy nexus with strategic teamwork.",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/f/f2/LoL_Cover.jpg",
-            Genres = new List<Genre> 
-            { 
-                Genre.Multiplayer, 
+            Genres = new List<Genre>
+            {
+                Genre.Multiplayer,
                 Genre.RPG,
                 Genre.Fighting
             }
@@ -172,13 +174,14 @@ public static class DataSeeder
         var g17 = new Game
         {
             Name = "Overwatch",
-            Description = "A team-based hero shooter where players select unique heroes and compete in objective-based game modes.",
+            Description =
+                "A team-based hero shooter where players select unique heroes and compete in objective-based game modes.",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/5/51/Overwatch_cover_art.jpg",
-            Genres = new List<Genre> 
-            { 
-                Genre.HeroShooter, 
-                Genre.Multiplayer, 
-                Genre.FirstPersonShooter 
+            Genres = new List<Genre>
+            {
+                Genre.HeroShooter,
+                Genre.Multiplayer,
+                Genre.FirstPersonShooter
             }
         };
 
@@ -195,11 +198,12 @@ public static class DataSeeder
                 Genre.Multiplayer
             }
         };
-        
+
         var g19 = new Game
         {
             Name = "Jackbox Party Pack",
-            Description = "A collection of party games where players join via their phones. Great for online group fun with trivia, drawing, and chaos!",
+            Description =
+                "A collection of party games where players join via their phones. Great for online group fun with trivia, drawing, and chaos!",
             ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/87/Jackbox_Party_Pack_Logo.png",
             Genres = new List<Genre>
             {
@@ -214,7 +218,8 @@ public static class DataSeeder
             Game = g1,
             Rating = 5,
             Title = "Masterful storytelling",
-            Content = "At the start I had some trouble getting into the game, but once I got into it the story really got to me. By the end I couldn't help but clap while crying."
+            Content =
+                "At the start I had some trouble getting into the game, but once I got into it the story really got to me. By the end I couldn't help but clap while crying."
         };
 
         var r2 = new Review
@@ -232,7 +237,8 @@ public static class DataSeeder
             Game = g3,
             Rating = 4,
             Title = "Endless fun with friends",
-            Content = "Smash Ultimate is chaotic in the best way. Balancing could be better but nothing beats the roster."
+            Content =
+                "Smash Ultimate is chaotic in the best way. Balancing could be better but nothing beats the roster."
         };
 
         var r4 = new Review
@@ -277,12 +283,13 @@ public static class DataSeeder
             Game = g14,
             Rating = 3,
             Title = "Fun but flawed",
-            Content = "Fortnite can be a blast with friends, and the constant updates keep things fresh. That said, the game feels unbalanced at times, especially with new weapons being added too often. The building mechanics, while unique, can be frustrating for casual players who get steamrolled by people instantly constructing skyscrapers mid-fight. It’s enjoyable, but also very chaotic and not always fair."
+            Content =
+                "Fortnite can be a blast with friends, and the constant updates keep things fresh. That said, the game feels unbalanced at times, especially with new weapons being added too often. The building mechanics, while unique, can be frustrating for casual players who get steamrolled by people instantly constructing skyscrapers mid-fight. It’s enjoyable, but also very chaotic and not always fair."
         };
 
         a1.Reviews = new List<Review> { r1, r3, r5, r7, r8 };
         a2.Reviews = new List<Review> { r2, r4, r6 };
-        
+
         g1.Reviews = new List<Review> { r1 };
         g2.Reviews = new List<Review> { r2 };
         g3.Reviews = new List<Review> { r3 };
