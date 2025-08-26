@@ -12,6 +12,6 @@ public class HomeController(IManager mgr) : Controller
     [HttpGet]
     public IEnumerable<GameDto> PopularGames()
     {
-        return GameMapper.ToDtos(mgr.GetPopularGames());
+        return Mapper.ToDtos(mgr.GetPopularGames());
     }
 }

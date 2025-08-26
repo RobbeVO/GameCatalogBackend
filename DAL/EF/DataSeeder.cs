@@ -60,7 +60,7 @@ public static class DataSeeder
             Name = "Among Us",
             Description =
                 "A social deduction multiplayer game where crewmates work together while impostors try to sabotage and eliminate them.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/f/f9/Among_Us_cover_art.jpg",
+            ImageUrl = "https://cdn1.epicgames.com/salesEvent/salesEvent/amoguslandscape_2560x1440-3fac17e8bb45d81ec9b2c24655758075",
             Genres = new List<Genre> { Genre.SocialDeduction, Genre.Multiplayer, Genre.Party }
         };
 
@@ -88,7 +88,7 @@ public static class DataSeeder
             Name = "Shadow of the Colossus",
             Description =
                 "Journey through a mysterious land and defeat massive colossi in a minimalist but powerful adventure.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/89/Shadow_of_the_Colossus.jpg",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/f/f8/Shadow_of_the_Colossus_%282005%29_cover.jpg",
             Genres = new List<Genre> { Genre.Adventure, Genre.Singleplayer }
         };
 
@@ -96,7 +96,7 @@ public static class DataSeeder
         {
             Name = "Super Mario Odyssey",
             Description = "Mario embarks on a globe-trotting 3D platforming adventure to rescue Princess Peach.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Super_Mario_Odyssey.jpg/250px-Super_Mario_Odyssey.jpg",
             Genres = new List<Genre> { Genre.Adventure, Genre.ThreeDPlatformer, Genre.Collectathon }
         };
 
@@ -105,7 +105,7 @@ public static class DataSeeder
             Name = "Detroit: Become Human",
             Description =
                 "A branching narrative game where choices determine the fates of androids in a futuristic Detroit.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/8e/Detroit_Become_Human.jpg",
+            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzop0r2Wu56_OQNaXPXu-kh0K23_EjPRQgkg&s",
             Genres = new List<Genre> { Genre.Story, Genre.ChooseYourOwnAdventure, Genre.Singleplayer }
         };
 
@@ -113,7 +113,7 @@ public static class DataSeeder
         {
             Name = "Disco Elysium",
             Description = "A groundbreaking RPG focused almost entirely on story, dialogue, and player choices.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/6/60/Disco_Elysium_cover_art.png",
+            ImageUrl = "https://maceandcrown.com/wp-content/uploads/2023/10/IMG_20231027_150031-900x1200.jpg",
             Genres = new List<Genre> { Genre.Story, Genre.RPG, Genre.Singleplayer }
         };
 
@@ -122,7 +122,7 @@ public static class DataSeeder
             Name = "God of War (2018)",
             Description =
                 "Kratos and Atreus journey across Norse mythology in this epic story-driven action-adventure.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/a/a7/God_of_War_4_cover.jpg",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/God_of_War_4_cover.jpg/250px-God_of_War_4_cover.jpg",
             Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.Singleplayer, Genre.RPG }
         };
 
@@ -131,7 +131,7 @@ public static class DataSeeder
             Name = "Red Dead Redemption 2",
             Description =
                 "An epic tale of life in America at the dawn of the modern age. Adventure and story blend seamlessly in its vast open world.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
+            ImageUrl = "https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png",
             Genres = new List<Genre> { Genre.Adventure, Genre.Story, Genre.Freeroam, Genre.RPG, Genre.Singleplayer }
         };
 
@@ -140,7 +140,7 @@ public static class DataSeeder
             Name = "Fortnite",
             Description =
                 "A massively popular online battle royale where players fight to be the last one standing, build structures, and compete in fast-paced matches.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/0/09/Fortnite_cover_art.jpg",
+            ImageUrl = "https://assets-prd.ignimgs.com/2025/04/02/nintendoswitch2-fortnite-keyart-square-1743635675429.jpg",
             Genres = new List<Genre> { Genre.BattleRoyale, Genre.Multiplayer, Genre.ThirdPersonShooter, Genre.Sandbox }
         };
 
@@ -149,7 +149,7 @@ public static class DataSeeder
             Name = "Rocket League",
             Description =
                 "High-powered vehicles meet soccer in this fast-paced multiplayer game where players compete in teams to score goals using rocket-powered cars.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/e/e0/Rocket_League_coverart.jpg",
+            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Rocket_League_cover.png/250px-Rocket_League_cover.png",
             Genres = new List<Genre>
             {
                 Genre.Sports,
@@ -162,7 +162,7 @@ public static class DataSeeder
             Name = "League of Legends",
             Description =
                 "One of the world’s most popular MOBAs where players compete in 5v5 matches, aiming to destroy the enemy nexus with strategic teamwork.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/f/f2/LoL_Cover.jpg",
+            ImageUrl = "https://gaming-cdn.com/images/products/9456/orig/league-of-legends-pc-game-cover.jpg?v=1747212286",
             Genres = new List<Genre>
             {
                 Genre.Multiplayer,
@@ -190,7 +190,7 @@ public static class DataSeeder
             Name = "Call of Duty: Warzone",
             Description =
                 "A free-to-play battle royale experience with fast-paced gunplay, vehicles, and squad-based action.",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/5/52/Call_of_Duty_Warzone_cover.jpg",
+            ImageUrl = "https://image.api.playstation.com/vulcan/ap/rnd/202503/2819/1651043aae33bdb6cf17d9992409d2ec5cc4856eb76228f6.png",
             Genres = new List<Genre>
             {
                 Genre.FirstPersonShooter,
@@ -204,7 +204,7 @@ public static class DataSeeder
             Name = "Jackbox Party Pack",
             Description =
                 "A collection of party games where players join via their phones. Great for online group fun with trivia, drawing, and chaos!",
-            ImageUrl = "https://upload.wikimedia.org/wikipedia/en/8/87/Jackbox_Party_Pack_Logo.png",
+            ImageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFd2NegOA1cD4F5z4NIZljV4BGWPOh5p53Hg&s",
             Genres = new List<Genre>
             {
                 Genre.Party,

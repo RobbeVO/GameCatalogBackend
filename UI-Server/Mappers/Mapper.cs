@@ -5,7 +5,7 @@ using Microsoft.OpenApi.Extensions;
 
 namespace GameCatalog.UI_Server.Mappers;
 
-public static class GameMapper
+public static class Mapper
 {
     public static IEnumerable<GameDto> ToDtos(IEnumerable<Game> games)
     {
@@ -22,7 +22,7 @@ public static class GameMapper
 
     private static double CalculateAverageRating(Game game)
     {
-        if (game.Reviews == null) return 0;
+        if (game.Reviews == null || !game.Reviews.Any()) return 0;
         return Math.Round(game.Reviews.Average(r => r.Rating), 1, MidpointRounding.AwayFromZero);
     }
 
@@ -60,7 +60,11 @@ public static class GameMapper
             reviews = game.Reviews.Select(review => new ReviewDto(review.Title, review.Content, review.Rating)).ToList();
             avgRating = CalculateAverageRating(game);
         }
-        
         return new GameDetailsDto(game.Id, game.Name, game.Description, game.ImageUrl, GetGameGenres(game), reviews, avgRating);
+    }
+
+    public static AccountDto ToAccountDto(string username, bool isAdmin)
+    {
+        return new AccountDto(username, isAdmin);
     }
 }

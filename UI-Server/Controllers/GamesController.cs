@@ -15,13 +15,13 @@ public class GamesController(IManager manager) : Controller
     [Route("{id:guid}")]
     public GameDetailsDto Get(Guid id)
     {
-        return GameMapper.ToDetailsDto(manager.GetGameById(id));
+        return Mapper.ToDetailsDto(manager.GetGameById(id));
     }
     
     [HttpGet]
     public IEnumerable<SearchGameDto> Get(string namePart)
     {
-        return GameMapper.ToSearchDtos(manager.GetGames(namePart));
+        return Mapper.ToSearchDtos(manager.GetGames(namePart));
     }
 
     [HttpGet]
@@ -29,7 +29,7 @@ public class GamesController(IManager manager) : Controller
     public IEnumerable<GameDto> Suggestions(string username)
     {
         var games = manager.GetSuggestions(username);
-        return GameMapper.ToDtos(games);
+        return Mapper.ToDtos(games);
     }
 
     [HttpPost]
@@ -37,6 +37,6 @@ public class GamesController(IManager manager) : Controller
     public async Task<GameDetailsDto> Create([FromBody] CreateGameDto request)
     {
         var game = await manager.CreateGame(request.Name, request.Description, request.ImageUrl);
-        return GameMapper.ToDetailsDto(game);
+        return Mapper.ToDetailsDto(game);
     }
 }

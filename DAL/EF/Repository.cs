@@ -4,7 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameCatalog.DAL.EF;
 
-public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) : IRepository
+public class Repository(
+    GcDbContext ctx,
+    UserManager<IdentityUser> userManager,
+    SignInManager<IdentityUser> signInManager) : IRepository
 {
     public IEnumerable<Game> FindPopularGames()
     {
@@ -38,27 +41,25 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
 
     public IEnumerable<Game> FindSuggestions(string username)
     {
-        var account = ctx.Accounts.Include(account => account.Reviews).ThenInclude(review => review.Game).SingleOrDefault(account => account.Identity.UserName.ToLower().Equals(username.ToLower()));
+        var account = ctx.Accounts.Include(account => account.Reviews).ThenInclude(review => review.Game)
+            .SingleOrDefault(account => account.Identity.UserName.ToLower().Equals(username.ToLower()));
         if (account == null) return new List<Game>();
+        var genres = new Dictionary<Genre, int>();
+        foreach (var review in account.Reviews)
         {
-            var genres = new Dictionary<Genre, int>();
-            foreach (var review in account.Reviews)
+            foreach (var genre in review.Game.Genres)
             {
-                foreach (var genre in review.Game.Genres)
+                if (!genres.TryAdd(genre, 1))
                 {
-                    if (!genres.TryAdd(genre, 1))
-                    {
-                        genres[genre]++;
-                    }
+                    genres[genre]++;
                 }
             }
-
-            var freqGen = genres.FirstOrDefault(genre => genre.Value == genres.Values.Max());
-            var suggestions = ctx.Games.AsEnumerable().Where(game => game.Genres.Contains(freqGen.Key));
-            var playedGames = account.Reviews.Select(review => review.Game);
-            return suggestions.Where(suggestion => !playedGames.Contains(suggestion));
         }
 
+        var freqGen = genres.FirstOrDefault(genre => genre.Value == genres.Values.Max());
+        var suggestions = ctx.Games.Include(game => game.Reviews).AsEnumerable().Where(game => game.Genres.Contains(freqGen.Key));
+        var playedGames = account.Reviews.Select(review => review.Game);
+        return suggestions.Where(suggestion => !playedGames.Contains(suggestion));
     }
 
     public string RegisterAccount(string email, string username, string password)
@@ -73,7 +74,9 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
 
     public async Task<string> Login(string identifier, string password)
     {
-        return identifier.Contains('@') ? await EmailLogin(identifier, password) : await UsernameLogin(identifier, password);
+        return identifier.Contains('@')
+            ? await EmailLogin(identifier, password)
+            : await UsernameLogin(identifier, password);
     }
 
     public void Logout()
@@ -92,7 +95,8 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
         var user = ctx.Users.SingleOrDefault(u => u.Email == email);
         if (user == null) return null;
         var result = await signInManager.PasswordSignInAsync(user, password, true, false);
-        return result.Succeeded ? user.UserName : null;;
+        return result.Succeeded ? user.UserName : null;
+        ;
     }
 
     private async Task<string> UsernameLogin(string username, string password)
@@ -100,6 +104,6 @@ public class Repository(GcDbContext ctx, UserManager<IdentityUser> userManager, 
         var user = ctx.Users.SingleOrDefault(u => u.UserName == username);
         if (user == null) return null;
         var result = await signInManager.PasswordSignInAsync(user, password, true, false);
-        return result.Succeeded ?  user.UserName : null;
+        return result.Succeeded ? user.UserName : null;
     }
 }
