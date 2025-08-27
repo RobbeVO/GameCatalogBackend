@@ -12,5 +12,5 @@ public interface IManager
     string RegisterAccount(string email, string username, string password);
     Task<string> Login(string identifier, string password);
     void Logout();
-    Task<Game> CreateGame(string name, string description, string imageUrl);
+    Task<Guid?> CreateGame(string name, string description, string imageUrl);
 }

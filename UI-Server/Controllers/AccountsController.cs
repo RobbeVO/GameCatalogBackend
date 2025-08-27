@@ -12,18 +12,16 @@ public class AccountsController(IManager manager) : Controller
     [HttpPost]
     public AccountDto Register([FromBody] RegisterAccountDto request)
     {
-        return Mapper.ToAccountDto(
-            manager.RegisterAccount(
-                request.Email, request.Username, request.Password),
-            User.IsInRole("ADMIN")
-        );
+        var username = manager.RegisterAccount(request.Email, request.Username, request.Password);
+        return username == null ? null : Mapper.ToAccountDto(username, User.IsInRole("ADMIN"));
     }
 
     [HttpPost]
     [Route("login")]
     public async Task<AccountDto> Login([FromBody] LoginDto request)
     {
-        return Mapper.ToAccountDto(await manager.Login(request.Identifier, request.Password), User.IsInRole("ADMIN"));
+        var username = await manager.Login(request.Identifier, request.Password);
+        return username == null ? null : Mapper.ToAccountDto(username, User.IsInRole("ADMIN"));
     }
 
     [HttpPost]

@@ -50,12 +50,12 @@ public class Manager(IRepository repo) : IManager
         repo.Logout();
     }
 
-    public async Task<Game> CreateGame(string name, string description, string imageUrl)
+    public async Task<Guid?> CreateGame(string name, string description, string imageUrl)
     {
         var game = new Game {Name = name, Description = description, ImageUrl = imageUrl};
         var genres = await GenerateGenres(game.Name, game.Description);
         game.Genres = genres;
-        return repo.SaveGame(game) ? game : null;
+        return repo.SaveGame(game) ? game.Id : null;
     }
 
     private static async Task<IEnumerable<Genre>> GenerateGenres(string name, string description)

@@ -33,10 +33,8 @@ public class GamesController(IManager manager) : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "ADMIN")]
-    public async Task<GameDetailsDto> Create([FromBody] CreateGameDto request)
+    public async Task<Guid?> Create([FromBody] CreateGameDto request)
     {
-        var game = await manager.CreateGame(request.Name, request.Description, request.ImageUrl);
-        return Mapper.ToDetailsDto(game);
+        return await manager.CreateGame(request.Name, request.Description, request.ImageUrl);
     }
 }
