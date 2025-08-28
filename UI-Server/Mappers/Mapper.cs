@@ -48,7 +48,7 @@ public static class Mapper
 
     private static SearchGameDto ToSearchDto(Game game)
     {
-        return new SearchGameDto(game.Id, game.Name);
+        return new SearchGameDto(game.Id, game.Name, game.ImageUrl);
     }
 
     public static GameDetailsDto ToDetailsDto(Game game)
